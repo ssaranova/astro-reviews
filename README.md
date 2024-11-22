@@ -1,3 +1,10 @@
+# Usefull commands
+- Install prisma: `npx prisma init`
+- Install prisma client: `npm install @prisma/client`
+
+- Pull connected database schema: `npx prisma db pull`
+- Create/update prisma client: `npx prisma generate`
+
 # Astro Starter Kit: Minimal
 
 ```sh
