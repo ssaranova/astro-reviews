@@ -1,12 +1,16 @@
 ---
+import { actions } from "astro:actions";
 import MainLayout from "../layouts/MainLayout.astro";
 import PlaceCard from "../components/PlaceCard.astro";
 
+export const prerender = false;
+
+const { data: places = [], error } = await Astro.callAction(actions.getPlaces, {});
 ---
 
 <MainLayout>
     <h1 class="text-3xl font-extrabold">Places</h1>
     <div class="grid grid-cols-3 gap-4">
-        <PlaceCard />
+        {places.map((place) => <PlaceCard place={place} />)}
     </div>
 </MainLayout>
