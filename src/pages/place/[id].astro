@@ -1,0 +1,31 @@
+---
+import { actions } from "astro:actions";
+
+import MainLayout from "../../layouts/MainLayout.astro";
+import PlaceCard from "../../components/PlaceCard.astro";
+
+export const getStaticPaths = async () => {
+    // const { data: places = [] } = await actions.getPlaces();
+    const { data: places = [] } = await Astro.callAction(actions.getPlaces, {});
+
+    if (!places) {
+        throw new Error("No data returned from getPlaces");
+    }
+
+    return places.map((place) => ({
+        params: {
+            id: place.id,
+        },
+        props: {
+            place,
+        },
+    }));
+};
+
+const { place } = Astro.props;
+console.log(place);
+---
+
+<MainLayout>
+    <PlaceCard place={place} />
+</MainLayout>

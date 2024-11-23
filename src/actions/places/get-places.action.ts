@@ -5,7 +5,7 @@ export const getPlaces = defineAction({
     accept: 'json',
     handler: async () => {
         try {
-            const places = await prisma.place.findMany()
+            const places = await prisma.place.findMany();
             return places;
         } catch (e) {
             console.error(e);
