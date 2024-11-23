@@ -3,7 +3,8 @@ import { actions } from "astro:actions";
 import MainLayout from "../layouts/MainLayout.astro";
 import PlaceCard from "../components/PlaceCard.astro";
 
-export const prerender = false;
+// Prevent SSR
+// export const prerender = false;
 
 const { data: places = [], error } = await Astro.callAction(actions.getPlaces, {});
 ---
